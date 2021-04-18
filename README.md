@@ -25,8 +25,7 @@ go run ./file-hot-reload/main.go
 docker run -d --rm --name=consul -e CONSUL_BIND_INTERFACE=eth0 -p 8500:8500 consul
 
 # insert configs in consul
-curl \
-    --request PUT \
+curl --request PUT \
     --data @./consul-reload/config-1.json \
     http://localhost:8500/v1/kv/samples/app
 
@@ -36,8 +35,7 @@ go run ./consul-reload/main.go
 # wait some seconds to have the application up and running
 
 # change a config
-curl \
-    --request PUT \
+curl --request PUT \
     --data @./consul-reload/config-2.json \
     http://localhost:8500/v1/kv/samples/app
 
